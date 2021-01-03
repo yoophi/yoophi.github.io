@@ -18,18 +18,4 @@ tags: ["home"]
 $ echo "Hello, world!"
 ```
 
-하고 싶은 대로 세팅이 얼추 되면, 강좌로 작성해서 공유하려고 합니다. 아직 멀었죠.
-
-[[wikilink]]
-
----
-
-Click [[Wiki Links|here]] to learn about [[/Wiki]] links.
-
---- 
-
-updated?
-
-
-
 <TagLinks />
