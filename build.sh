@@ -1,5 +1,8 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
+PROJ_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+cd $PROJ_DIR
 
 # abort on errors
 set -e
@@ -32,6 +35,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 git push -f git@github.com:yoophi/yoophi.github.io.git master:gh-pages
 
+cd $PROJ_DIR
 git checkout -- .vuepress/config.js
 
-cd -
