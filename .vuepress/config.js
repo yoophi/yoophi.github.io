@@ -1,92 +1,24 @@
+const nav  = require('./nav.json')
+const sidebar  = require('./sidebar.json')
+
 module.exports = {
     base: "/",
     themeConfig: {
         search: false,
-        nav: [
-            { text: "Home", link: "/" },
-            { text: "About", link: "/about/" },
-            { text: "Logs", link: "/logs/" },
-            { text: 'Drafts', link: '/drafts/' },
-            { text: "TIL", link: "/til/" },
-            { text: "문서", link: "/docs/" },
-            { text: "PlantUML", link: "/plantuml/" },
-            { text: "GitHub", link: "https://github.com/yoophi" },
-        ],
-        sidebar: {
-            '/drafts/': [
-                {
-                    title: 'Drafts',
-                    path: '/drafts/',
-                    collapsable: false,
-                    sidebarDepth: 3,
-                    children: [
-                        '',
-                        'kops',
-                        'terraform-cidrsubnet',
-                    ]
-                },
-            ],
-            "/logs/": [
-                {
-                    title: "vuepress",
-                    path: "/logs/",
-                    collapsable: false,
-                    sidebarDepth: 3,
-                    children: [
-                        "vuepress/",
-                        "vuepress/todo",
-                        "vuepress/image-caption",
-                    ]
-                },
-                {
-                    title: "kubernetes",
-                    path: "/logs/",
-                    collapsable: false,
-                    sidebarDepth: 3,
-                    children: [
-                        "kubernetes/",
-                    ]
-                },
-            ],
-            "/til/": [
-                {
-                    title: "shell script",
-                    path: "/til/",
-                    collapsable: false,
-                    sidebarDepth: 3,
-                    children: [
-                        "eval-dotenv",
-                        "create-file-from-template",
-                    ]
-                },
-                {
-                    title: "utilities",
-                    path: "/til/",
-                    collapsable: false,
-                    sidebarDepth: 3,
-                    children: [
-                        "utils/confd-with-env"
-                    ]
-                },
-                {
-                    title: "tips",
-                    path: "/til/",
-                    collapsable: false,
-                    sidebarDepth: 3,
-                    children: [
-                        "tips/hide-default-interactive-shell-is-message",
-                    ]
-                },
-            ]
-        }
+        nav,
+        sidebar
     },
     title: "UNDEFINED @yoophi",
     ga: "GOOGLE_ANALYTICS_ID",
     markdown: {
         config: md => {
+            const options = {}
+            const wikilinks = require('markdown-it-wikilinks')(options)
+
             md.use(require("markdown-it-plantuml"))
             md.use(require("markdown-it-imsize"))
             md.use(require('markdown-it-hashtag'))
+            md.use(wikilinks)
 
             md.renderer.rules.hashtag_open  = function(tokens, idx) {
                 var tagName = tokens[idx].content.toLowerCase(); 
