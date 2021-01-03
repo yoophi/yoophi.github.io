@@ -1,0 +1,9 @@
+.DS_Store
+.env
+.python-version
+.vuepress/config.js
+.vuepress/dist/*
+node_modules/*
+
+.vuepress/dist
+yarn-error.log
