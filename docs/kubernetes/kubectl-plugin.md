@@ -1,0 +1,3 @@
+# kubectl plugin
+
+- `kubectl-example`
