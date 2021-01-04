@@ -4,14 +4,14 @@ title: confd 를 이용하여 설정 파일 만들기
 
 # `confd` 를 이용하여 설정 파일 만들기
 
-<https://github.com/teamhephy/confd>
+<https://github.com/kelseyhightower/confd>
 
 [shell script 를 이용하여 template 에서 설정 파일 만들기](../create-file-from-template.md) 를 진행해봤는데, 
 `confd` 라는 강력한 도구를 이용하여 다시 실행해봅시다.
 
 ## `confd` 설치
 
-[download and install confd](https://github.com/teamhephy/confd/blob/master/docs/installation.md) 을 참고합니다.
+[download and install confd](https://github.com/kelseyhightower/confd/blob/master/docs/installation.md) 을 참고합니다.
 용량은 5mb 정도.
 
 ## `confd` 디렉토리 및 templates 생성 
