@@ -8,7 +8,7 @@ module.exports = {
         nav,
         sidebar
     },
-    title: "UNDEFINED @yoophi",
+    title: "@yoophi",
     ga: "GOOGLE_ANALYTICS_ID",
     markdown: {
         config: md => {
