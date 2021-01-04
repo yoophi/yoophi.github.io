@@ -4,5 +4,6 @@
 .vuepress/dist/*
 node_modules/*
 
+.vscode
 .vuepress/dist
 yarn-error.log
