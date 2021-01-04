@@ -1,10 +1,10 @@
 [
-    { "text": "Home", "link": "/" },
-    { "text": "About", "link": "/about/" },
-    { "text": "Logs", "link": "/logs/" },
-    { "text": "Drafts", "link": "/drafts/" },
-    { "text": "TIL", "link": "/til/" },
-    { "text": "문서", "link": "/docs/" },
-    { "text": "PlantUML", "link": "/plantuml/" },
-    { "text": "GitHub", "link": "https://github.com/yoophi" }
+  { "text": "Home", "link": "/" },
+  { "text": "About", "link": "/about/" },
+  { "text": "문서", "link": "/docs/" },
+  { "text": "TIL", "link": "/til/" },
+  { "text": "기록", "link": "/logs/" },
+  { "text": "미완성", "link": "/drafts/" },
+  { "text": "PlantUML", "link": "/plantuml/" },
+  { "text": "GitHub", "link": "https://github.com/yoophi" }
 ]
