@@ -12,8 +12,11 @@ jobs:
       env:
         GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
+    - name: Install jq
+      run: sudo apt-get install jq -y
+
     - name: Create VERSION page
-      run: "echo '```' > version.md && npm version >> version.md && echo '```' >> version.md"
+      run: "echo '```'$(jq -r .version package.json)'```' > version.md"
 
     - name: Check config.js (2)
       run: "cat .vuepress/config.js | grep ga"
