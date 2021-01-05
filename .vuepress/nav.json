@@ -3,6 +3,7 @@
   { "text": "About", "link": "/about/" },
   { "text": "문서", "link": "/docs/" },
   { "text": "TIL", "link": "/til/" },
+  { "text": "SWM", "link": "/swm/" },
   { "text": "기록", "link": "/logs/" },
   { "text": "미완성", "link": "/drafts/" },
   { "text": "PlantUML", "link": "/plantuml/" },
