@@ -2,8 +2,11 @@
 .env
 .python-version
 .vuepress/dist/*
+node_modules
 node_modules/*
 
+.obsidian
 .vscode
 .vuepress/dist
 yarn-error.log
+
