@@ -8,5 +8,6 @@ tags: ["drafts"]
 
 - [[kustomize]]
 - [[oauth_openid_connect_saml]]
+- [OAuth Grant Types](oauth_grant_types.md)
 
 <TagLinks />
