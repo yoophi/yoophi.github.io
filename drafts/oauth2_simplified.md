@@ -1,6 +1,5 @@
 ---
-tags: 
-- "oauth"
+tags: ["oauth"]
 ---
 
 ## 간단하게 설명하는 OAuth 2
@@ -66,50 +65,83 @@ version can be found
     -   [Performance at Scale](#performance-at-scale)
 -   [Resources](#resources)
 
-## Roles
+## 역할
 
-### The Third-Party Application: \"Client\"
+### 3자 어플리케이션: \"클라이언트\"
 
+클라이언트는 사용자의 계정에 접근하고자 하는 어플리케이션입니다.
+클라이언트는 동작을 수행하기 전에 사용자로부터 권한을 획득해야 합니다.
+
+<!--
 The client is the application that is attempting to get access to
 the user\'s account. It needs to get permission from the user before
 it can do so.
+-->
+### API: \"리소스 서버\"
 
-### The API: \"Resource Server\"
+리소스 서버는 사용자의 정보에 접속하기 위해 사용되는 API 서버입니다.
 
+<!--
 The resource server is the API server used to access the user\'s
 information.
+-->
 
-### The Authorization Server
+### 인증 서버
 
+인증서버는  사용자가 요청을 승인 또는 거절할 수 있는 인터페이스를 제공하는 서버입니다.
+작게 구현하자면 인증서버는 API 서버와 동일할 수도 있습니다. 그렇지만 
+큰 스케일로 배포될 때에는 대체로 단독 서버로 구성됩니다.
+
+<!--
 This is the server that presents the interface where the user
 approves or denies the request. In smaller implementations, this may
 be the same server as the API server, but larger scale deployments
 will often build this as a separate component.
+-->
+### 사용자: \"자원 소유자 (Resource Owner)\"
 
-### The User: \"Resource Owner\"
+Resource Owner는 그들 계정의 일부에 대한 접근 권한을 부여하는 사람입니다.
 
+<!--
 The resource owner is the person who is giving access to some
 portion of their account.
+-->
 
-## Creating an App
+## 앱 만들기
+<!--## Creating an App-->
 
+OAuth 프로세스를 시작하기 전에, 우선 서비스에 새로운 앱을 등록해야 합니다.
+새로운 앱을 등록할 때, 보통 어플리케이션의 이름, 웹사이트, 로고 등등 기본적인 정보를 등록하게
+됩니다.
+추가적으로 
+웹서버나 브라우저 기반의 또는 모바일 앱 환경에서 사용자를 redirect 시킬 때 사용할 
+Redirect URI 를 등록해야 합니다.
+
+<!--
 Before you can begin the OAuth process, you must first register a
 new app with the service. When registering a new app, you usually
 register basic information such as application name, website, a
 logo, etc. In addition, you must register a redirect URI to be used
 for redirecting users to for web server, browser-based, or mobile
 apps.
-
+-->
 ### Redirect URIs
 
+보안적인 공격에 방어하기 위해, 서비스는 사용자를 미리 등록한 URI 로만 redirect 해줍니다.
+HTTP 방식의 Redirect URI 는 HTTPS 로 구성되어야만 합니다.
+이렇게 함으로써 인증 과정에서 누군가가 토큰을 가로채는 위험을 예방할 수 있습니다.
+네이티브 앱의 경우, redirect URI 로 어플리케이션을 위한 custom URL scheme 를 등록할 수 있습니다.
+예를 들자면 `demoapp://redirect` 같은 것 말입니다.
+
+<!--
 The service will only redirect users to a registered URI, which
 helps prevent some attacks. Any HTTP redirect URIs must be served
 via HTTPS. This helps prevent tokens from being intercepted during
 the authorization process. Native apps may register a redirect URI
 with a custom URL scheme for the application, which may look like
 `demoapp://redirect`.
-
-### Client ID and Secret
+-->
+### Client ID 와 Secret
 
 After registering your app, you will receive a client ID and
 optionally a client secret. The client ID is considered public
