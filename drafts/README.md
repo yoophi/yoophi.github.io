@@ -9,5 +9,6 @@ tags: ["drafts"]
 - [[Kustomize]]
 - [OAuth, OpenID Connect 및 SAML 의 차이점](oauth_openid_connect_saml.md)
 - [OAuth Grant Types](oauth_grant_types.md)
+- [OAuth 2 Simplified](oauth2_simplified.md)
 
 <TagLinks />
