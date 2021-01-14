@@ -2,6 +2,7 @@
   { "text": "Home", "link": "/" },
   { "text": "About", "link": "/about/" },
   { "text": "문서", "link": "/docs/" },
+  { "text": "번역", "link": "/translations/" },
   { "text": "TIL", "link": "/til/" },
   { "text": "SWM", "link": "/swm/" },
   { "text": "기록", "link": "/logs/" },
