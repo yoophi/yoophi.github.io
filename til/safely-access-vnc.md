@@ -18,3 +18,5 @@ ssh -p 23456 -L 34567:localhost:5900 remote.host.name
 ```
 open vnc://localhost:34567
 ```
+
+SSH 터널링 관련해서는 [[SSH, Network] SSH 포트 포워딩(SSH 터널링)의 개념 및 사용 방법](https://m.blog.naver.com/PostView.nhn?blogId=alice_k106&logNo=221364560794&proxyReferer=https:%2F%2Fwww.google.com%2F) 문서에 정리가 잘 되어 있으니 참고하면 좋을 것 같다. 
