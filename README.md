@@ -18,4 +18,6 @@ tags: ["home"]
 $ echo "Hello, world!"
 ```
 
+Go to [Timeleft](https://yoophi.github.io/timeleft/index.html)
+
 <TagLinks />
