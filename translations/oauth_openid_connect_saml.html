@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>OAuth, OpenID Connect 및 SAML 의 차이점 | @yoophi</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/assets/favicons/logo-144.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.08f393e2.css" as="style"><link rel="preload" href="/assets/js/app.40e07b0e.js" as="script"><link rel="preload" href="/assets/js/2.bb588f66.js" as="script"><link rel="preload" href="/assets/js/64.beabe9f1.js" as="script"><link rel="preload" href="/assets/js/4.937e0cf2.js" as="script"><link rel="prefetch" href="/assets/js/10.c740fa7d.js"><link rel="prefetch" href="/assets/js/11.1ae45d5c.js"><link rel="prefetch" href="/assets/js/12.8b407830.js"><link rel="prefetch" href="/assets/js/13.a6f18e1d.js"><link rel="prefetch" href="/assets/js/14.ca616fb1.js"><link rel="prefetch" href="/assets/js/15.95647889.js"><link rel="prefetch" href="/assets/js/16.c1472486.js"><link rel="prefetch" href="/assets/js/17.589ee85a.js"><link rel="prefetch" href="/assets/js/18.4dbef7d8.js"><link rel="prefetch" href="/assets/js/19.20f4258d.js"><link rel="prefetch" href="/assets/js/20.af5aaaad.js"><link rel="prefetch" href="/assets/js/21.291a49c9.js"><link rel="prefetch" href="/assets/js/22.e276dba5.js"><link rel="prefetch" href="/assets/js/23.bb8ce1b4.js"><link rel="prefetch" href="/assets/js/24.121f286e.js"><link rel="prefetch" href="/assets/js/25.965f8db8.js"><link rel="prefetch" href="/assets/js/26.494575a9.js"><link rel="prefetch" href="/assets/js/27.e06f426b.js"><link rel="prefetch" href="/assets/js/28.add3ef2c.js"><link rel="prefetch" href="/assets/js/29.fc401375.js"><link rel="prefetch" href="/assets/js/3.640f833d.js"><link rel="prefetch" href="/assets/js/30.959e0655.js"><link rel="prefetch" href="/assets/js/31.f58a2504.js"><link rel="prefetch" href="/assets/js/32.0ace2afb.js"><link rel="prefetch" href="/assets/js/33.4f769c7b.js"><link rel="prefetch" href="/assets/js/34.2953dc34.js"><link rel="prefetch" href="/assets/js/35.c6b7003b.js"><link rel="prefetch" href="/assets/js/36.822d40a7.js"><link rel="prefetch" href="/assets/js/37.6ffc8754.js"><link rel="prefetch" href="/assets/js/38.35a414b4.js"><link rel="prefetch" href="/assets/js/39.4ab22417.js"><link rel="prefetch" href="/assets/js/40.e041ec68.js"><link rel="prefetch" href="/assets/js/41.9bb4545b.js"><link rel="prefetch" href="/assets/js/42.5de34203.js"><link rel="prefetch" href="/assets/js/43.bd1e18d4.js"><link rel="prefetch" href="/assets/js/44.3bd3fabd.js"><link rel="prefetch" href="/assets/js/45.20b7cd2c.js"><link rel="prefetch" href="/assets/js/46.d73e0209.js"><link rel="prefetch" href="/assets/js/47.57121647.js"><link rel="prefetch" href="/assets/js/48.c3a8177e.js"><link rel="prefetch" href="/assets/js/49.188bf2d8.js"><link rel="prefetch" href="/assets/js/5.d21d4331.js"><link rel="prefetch" href="/assets/js/50.b41ee294.js"><link rel="prefetch" href="/assets/js/51.cd2b68f3.js"><link rel="prefetch" href="/assets/js/52.9069589b.js"><link rel="prefetch" href="/assets/js/53.a221066e.js"><link rel="prefetch" href="/assets/js/54.aac8607d.js"><link rel="prefetch" href="/assets/js/55.a66382f9.js"><link rel="prefetch" href="/assets/js/56.4e39430e.js"><link rel="prefetch" href="/assets/js/57.a47b0a44.js"><link rel="prefetch" href="/assets/js/58.0c57534f.js"><link rel="prefetch" href="/assets/js/59.a8a63421.js"><link rel="prefetch" href="/assets/js/6.74c4ad38.js"><link rel="prefetch" href="/assets/js/60.e55d828a.js"><link rel="prefetch" href="/assets/js/61.d1f83336.js"><link rel="prefetch" href="/assets/js/62.c5c6dd51.js"><link rel="prefetch" href="/assets/js/63.34a12338.js"><link rel="prefetch" href="/assets/js/65.a2255ad5.js"><link rel="prefetch" href="/assets/js/66.077e83ef.js"><link rel="prefetch" href="/assets/js/7.63816676.js"><link rel="prefetch" href="/assets/js/8.b0aa0cd0.js"><link rel="prefetch" href="/assets/js/9.27a52bed.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.08f393e2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">@yoophi</span></a> <div class="links"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  About
+</a></div><div class="nav-item"><a href="/docs/" class="nav-link">
+  문서
+</a></div><div class="nav-item"><a href="/translations/" class="nav-link router-link-active">
+  번역
+</a></div><div class="nav-item"><a href="/til/" class="nav-link">
+  TIL
+</a></div><div class="nav-item"><a href="/swm/" class="nav-link">
+  SWM
+</a></div><div class="nav-item"><a href="/logs/" class="nav-link">
+  기록
+</a></div><div class="nav-item"><a href="/drafts/" class="nav-link">
+  미완성
+</a></div><div class="nav-item"><a href="/plantuml/" class="nav-link">
+  PlantUML
+</a></div><div class="nav-item"><a href="https://github.com/yoophi" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  About
+</a></div><div class="nav-item"><a href="/docs/" class="nav-link">
+  문서
+</a></div><div class="nav-item"><a href="/translations/" class="nav-link router-link-active">
+  번역
+</a></div><div class="nav-item"><a href="/til/" class="nav-link">
+  TIL
+</a></div><div class="nav-item"><a href="/swm/" class="nav-link">
+  SWM
+</a></div><div class="nav-item"><a href="/logs/" class="nav-link">
+  기록
+</a></div><div class="nav-item"><a href="/drafts/" class="nav-link">
+  미완성
+</a></div><div class="nav-item"><a href="/plantuml/" class="nav-link">
+  PlantUML
+</a></div><div class="nav-item"><a href="https://github.com/yoophi" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="oauth-openid-connect-및-saml-의-차이점"><a href="#oauth-openid-connect-및-saml-의-차이점" class="header-anchor">#</a> OAuth, OpenID Connect 및 SAML 의 차이점</h1> <div class="custom-block tip"><p class="custom-block-title">INFO</p> <p>인증 서버를 개발하면서 OpenID Connect 와 OAuth 에 대해 자료를 정리하고
+있습니다.<br>
+참고하기 위해 <a href="https://www.okta.com/" target="_blank" rel="noopener noreferrer">okta<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 의
+<a href="https://www.okta.com/identity-101/whats-the-difference-between-oauth-openid-connect-and-saml/" target="_blank" rel="noopener noreferrer">문서<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>를
+번역해보았습니다.</p></div> <p>데이터를 공격하는 방법만큼 데이터를 안전하게 유지하는 방법도 많습니다. 다중
+요소 인증(Multi Facto Auth)에서 단일 로그온 및 내부 방화벽에 이르기까지 다양한
+옵션을 사용할 수 있습니다. 개발자와 IT 전문가의 경우, 데이터 및 ID 보안을
+유지하는 방법을 빨리 선택해야 합니다. 연합 ID를 안전하게 유지하기 위해 구현하기
+위해 어떤 표준을 선택해야 할까요?</p> <p>결정이 항상 간단한 것은 아닙니다. 많은 사람들이 OAuth 2.0, OpenID Connect 와
+SAML 의 서로 다른 페더레이션 구조 때문에 이것들을 구별하는데 어려움을 겪고
+있습니다.  이 문서에서는 이러한 표준의 의미와 차이점을, 그리고 언제 무엇을
+사용하면 좋을지 알아봅니다.</p> <p>SAML 과 OAuth 를 더 심도있게 분석한 <a href="https://www.okta.com/identity-101/saml-vs-oauth/" target="_blank" rel="noopener noreferrer">다른 기사<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>도 있으니 관심있으면 살펴보세요.</p> <h2 id="표준간의-차이점"><a href="#표준간의-차이점" class="header-anchor">#</a> 표준간의 차이점</h2> <p>이러한 세가지 표준들의 가장 중요한 차이점은, OpenID Connect 와 SAML 이 연합
+인증(federated authentication)을 위한 업계 표준인데 반해 OAuth 2.0 은 보호된
+리소스(어플리케이션이나 파일들)에 대한 권한을 인가(authorization)하기 위한
+프레임워크라는 점입니다.</p> <p>OpenID Connect 또는 SAML 을 독립적으로 사용함으로써 기업은 사용자 인증을
+구현하고 SSO(Single Sign-On)을 배포할 수 있습니다.</p> <ul><li>OpenID Connect 는 OAuth 2.0 프로토콜을 기반으로 하며, ID Token 이라고 하는
+JSON Web Token(JWT)을 사용하여 OAuth 2.0 이 기본으로 제공하지 않는 부분인
+scopes 나 Endpoint Discovery 와 같은 영역을 표준화합니다.  OpenID Connect는
+특히 사용자 인증에 집중하고 있으며 웹사이트나 모바일 앱의 사용자 로그인을
+구현하기 위해 널리 사용됩니다.</li></ul> <ul><li>SAML은 OAuth 와 독립적이며 인증을 위해 JWT 가 아닌 XML SAML 포맷의 메시지를
+교환하는 방식을 사용합니다.  엔터프라이즈 고객이 단일 로그인을 사용하여
+여러개의 어플리케이션에 로그인할 수 있도록 지원하는 데 보다 일반적으로
+사용됩니다.</li></ul> <h2 id="oauth-2-0-vs-openid-connect-vs-saml"><a href="#oauth-2-0-vs-openid-connect-vs-saml" class="header-anchor">#</a> OAuth 2.0 vs OpenID Connect vs SAML</h2> <p>조직이 어떤 구조를 사용해야하는가? 하는 질문이 아니라 각각의 표준이 어떤 용도로
+사용되는가? 라는 점을 기억하세요.  강력한 ID 솔루션은 기업이 보호해야하는 운영
+유형에 따라 이 세가지 구조를 사용하여 서로 다른 목표를 달성합니다.</p> <p>이러한 사용 사례는 다음과 같습니다.</p> <p><strong>OAuth 2.0</strong>: <br>
+새 애플리케이션에 가입하고 Facebook이나 전화 연락처를 통해 새 연락처를 자동으로
+수집할 수 있도록 동의한 적이 있다면, 아마도 OAuth 2.0을 사용한 것입니다.  이
+표준은 안전한 위임 액세스를 제공합니다.  즉, 응용프로그램이 자격 증명을
+공유하지 않고도 사용자를 대신하여 서버에서 작업을 수행하거나 리소스에 액세스할
+수 있습니다. ID 제공자(IdP)가 사용자의 승인으로 타사 응용 프로그램에 토큰을
+발급하도록 허용함으로써 이 작업을 수행할 수 있습니다.</p> <p><strong>OpenID Connect</strong>: <br>
+Google을 사용하여 YouTube 같은 어플리케이션에 로그인했거나,
+Facebook 을 이용해서 온라인 쇼핑 서비스에 로그인했다면 이 인증 옵션에 익숙한
+것입니다. OpenID Connect는 조직에서 사용자를 인증하는 데 사용하는 개방형
+표준입니다. IdP는 사용자가 로그인 정보를 공유하지 않고도 IdP에 로그인한 다음
+다른 웹 사이트와 앱에 액세스할 수 있도록 이 기능을 사용합니다.</p> <p><strong>SAML</strong>: <br>
+아마도 업무 환경에서 SAML 인증을 경험한 적이 더 많을 것입니다. 회사
+인트라넷 또는 IdP에 로그인한 다음 자격 증명을 다시 입력하지 않고도 Salesforce,
+Box 또는 Workday와 같은 수많은 추가 서비스에 액세스할 수 있습니다. SAML은 IdP와
+서비스 공급자 간에 인증 및 인증 데이터를 교환하여 사용자의 ID와 사용 권한을
+확인한 다음 서비스에 대한 액세스를 허용하거나 거부하기 위한 XML 기반
+표준입니다.</p> <p>엔터프라이즈 서비스는 OAuth 2.0, OpenID 및 SAML과 같은 웹 프레임워크와
+프로토콜에 의존하여 구조와 보안을 연합 인증(Federated Identity)으로 구현합니다.
+각 표준을 언제 사용해야 하는지 아는 것이 조직의 데이터를 보호하는 데 있어
+중요합니다.</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.40e07b0e.js" defer></script><script src="/assets/js/2.bb588f66.js" defer></script><script src="/assets/js/64.beabe9f1.js" defer></script><script src="/assets/js/4.937e0cf2.js" defer></script>
+  </body>
+</html>

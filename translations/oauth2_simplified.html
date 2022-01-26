@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>간단하게 설명하는 OAuth 2 | @yoophi</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/assets/favicons/logo-144.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.08f393e2.css" as="style"><link rel="preload" href="/assets/js/app.40e07b0e.js" as="script"><link rel="preload" href="/assets/js/2.bb588f66.js" as="script"><link rel="preload" href="/assets/js/62.c5c6dd51.js" as="script"><link rel="preload" href="/assets/js/4.937e0cf2.js" as="script"><link rel="prefetch" href="/assets/js/10.c740fa7d.js"><link rel="prefetch" href="/assets/js/11.1ae45d5c.js"><link rel="prefetch" href="/assets/js/12.8b407830.js"><link rel="prefetch" href="/assets/js/13.a6f18e1d.js"><link rel="prefetch" href="/assets/js/14.ca616fb1.js"><link rel="prefetch" href="/assets/js/15.95647889.js"><link rel="prefetch" href="/assets/js/16.c1472486.js"><link rel="prefetch" href="/assets/js/17.589ee85a.js"><link rel="prefetch" href="/assets/js/18.4dbef7d8.js"><link rel="prefetch" href="/assets/js/19.20f4258d.js"><link rel="prefetch" href="/assets/js/20.af5aaaad.js"><link rel="prefetch" href="/assets/js/21.291a49c9.js"><link rel="prefetch" href="/assets/js/22.e276dba5.js"><link rel="prefetch" href="/assets/js/23.bb8ce1b4.js"><link rel="prefetch" href="/assets/js/24.121f286e.js"><link rel="prefetch" href="/assets/js/25.965f8db8.js"><link rel="prefetch" href="/assets/js/26.494575a9.js"><link rel="prefetch" href="/assets/js/27.e06f426b.js"><link rel="prefetch" href="/assets/js/28.add3ef2c.js"><link rel="prefetch" href="/assets/js/29.fc401375.js"><link rel="prefetch" href="/assets/js/3.640f833d.js"><link rel="prefetch" href="/assets/js/30.959e0655.js"><link rel="prefetch" href="/assets/js/31.f58a2504.js"><link rel="prefetch" href="/assets/js/32.0ace2afb.js"><link rel="prefetch" href="/assets/js/33.4f769c7b.js"><link rel="prefetch" href="/assets/js/34.2953dc34.js"><link rel="prefetch" href="/assets/js/35.c6b7003b.js"><link rel="prefetch" href="/assets/js/36.822d40a7.js"><link rel="prefetch" href="/assets/js/37.6ffc8754.js"><link rel="prefetch" href="/assets/js/38.35a414b4.js"><link rel="prefetch" href="/assets/js/39.4ab22417.js"><link rel="prefetch" href="/assets/js/40.e041ec68.js"><link rel="prefetch" href="/assets/js/41.9bb4545b.js"><link rel="prefetch" href="/assets/js/42.5de34203.js"><link rel="prefetch" href="/assets/js/43.bd1e18d4.js"><link rel="prefetch" href="/assets/js/44.3bd3fabd.js"><link rel="prefetch" href="/assets/js/45.20b7cd2c.js"><link rel="prefetch" href="/assets/js/46.d73e0209.js"><link rel="prefetch" href="/assets/js/47.57121647.js"><link rel="prefetch" href="/assets/js/48.c3a8177e.js"><link rel="prefetch" href="/assets/js/49.188bf2d8.js"><link rel="prefetch" href="/assets/js/5.d21d4331.js"><link rel="prefetch" href="/assets/js/50.b41ee294.js"><link rel="prefetch" href="/assets/js/51.cd2b68f3.js"><link rel="prefetch" href="/assets/js/52.9069589b.js"><link rel="prefetch" href="/assets/js/53.a221066e.js"><link rel="prefetch" href="/assets/js/54.aac8607d.js"><link rel="prefetch" href="/assets/js/55.a66382f9.js"><link rel="prefetch" href="/assets/js/56.4e39430e.js"><link rel="prefetch" href="/assets/js/57.a47b0a44.js"><link rel="prefetch" href="/assets/js/58.0c57534f.js"><link rel="prefetch" href="/assets/js/59.a8a63421.js"><link rel="prefetch" href="/assets/js/6.74c4ad38.js"><link rel="prefetch" href="/assets/js/60.e55d828a.js"><link rel="prefetch" href="/assets/js/61.d1f83336.js"><link rel="prefetch" href="/assets/js/63.34a12338.js"><link rel="prefetch" href="/assets/js/64.beabe9f1.js"><link rel="prefetch" href="/assets/js/65.a2255ad5.js"><link rel="prefetch" href="/assets/js/66.077e83ef.js"><link rel="prefetch" href="/assets/js/7.63816676.js"><link rel="prefetch" href="/assets/js/8.b0aa0cd0.js"><link rel="prefetch" href="/assets/js/9.27a52bed.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.08f393e2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">@yoophi</span></a> <div class="links"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  About
+</a></div><div class="nav-item"><a href="/docs/" class="nav-link">
+  문서
+</a></div><div class="nav-item"><a href="/translations/" class="nav-link router-link-active">
+  번역
+</a></div><div class="nav-item"><a href="/til/" class="nav-link">
+  TIL
+</a></div><div class="nav-item"><a href="/swm/" class="nav-link">
+  SWM
+</a></div><div class="nav-item"><a href="/logs/" class="nav-link">
+  기록
+</a></div><div class="nav-item"><a href="/drafts/" class="nav-link">
+  미완성
+</a></div><div class="nav-item"><a href="/plantuml/" class="nav-link">
+  PlantUML
+</a></div><div class="nav-item"><a href="https://github.com/yoophi" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  About
+</a></div><div class="nav-item"><a href="/docs/" class="nav-link">
+  문서
+</a></div><div class="nav-item"><a href="/translations/" class="nav-link router-link-active">
+  번역
+</a></div><div class="nav-item"><a href="/til/" class="nav-link">
+  TIL
+</a></div><div class="nav-item"><a href="/swm/" class="nav-link">
+  SWM
+</a></div><div class="nav-item"><a href="/logs/" class="nav-link">
+  기록
+</a></div><div class="nav-item"><a href="/drafts/" class="nav-link">
+  미완성
+</a></div><div class="nav-item"><a href="/plantuml/" class="nav-link">
+  PlantUML
+</a></div><div class="nav-item"><a href="https://github.com/yoophi" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="간단하게-설명하는-oauth-2"><a href="#간단하게-설명하는-oauth-2" class="header-anchor">#</a> 간단하게 설명하는 OAuth 2</h2> <p>이 문서는 개발자들과 서비스 제공자들이 OAuth 2 프로토콜을 구현할 수 있도록
+OAuth 2.0 을 단순화된 형식으로 설명합니다.</p> <p><a href="https://oauth.net/2/" target="_blank" rel="noopener noreferrer">OAuth 2 스펙<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>은 다소 읽기 복잡합니다.
+그래서 저는 OAuth 2의 용어를 간단하게 설명할 수 있는 방식으로
+이 글을 썼습니다.
+The core spec leaves many decisions up to the
+implementer, often based on security tradeoffs of the
+implementation.
+OAuth 2를 성공적으로 구현하기 위해 필요한 모든 가능한
+결정들을 설명하는 대신, 이 글에서는 적당한 대부분의 구현에 필요한 것들을
+설명합니다.</p> <p><a href="https://www.udemy.com/course/oauth-2-simplified/?referralCode=B04F59AED67B8DA74FA7" target="_blank" rel="noopener noreferrer"><img src="https://aaronparecki.com/oauth-2-simplified/nuts-and-bolts-of-oauth.png" alt=""><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>Note: 이 문서는 2012 버전에 기반한 OAuth 2.0 모범사례로 업데이트되었습니다.
+원본 문서는 <a href="https://aaronparecki.com/2012/07/29/7/oauth2-simplified" target="_blank" rel="noopener noreferrer">이곳<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>에서 있습니다.</p> <h2 id="table-of-contents"><a href="#table-of-contents" class="header-anchor">#</a> Table of Contents</h2> <ul><li><a href="#roles">Roles</a>: Applications, APIs and Users</li> <li><a href="#creating-an-app">Creating an App</a></li> <li><a href="#authorization">Authorization</a>: Obtaining an access token
+<ul><li><a href="#web-server-apps">Web Server Apps</a></li> <li><a href="#single-page-apps">Single-Page Apps</a></li> <li><a href="#mobile-apps">Mobile Apps</a></li> <li><a href="#others">Other Grant Types</a></li></ul></li> <li><a href="#making-authenticated-requests">Making Authenticated Requests</a></li> <li><a href="#differences">Differences from OAuth 1.0</a> <ul><li><a href="#authentication-and-signatures">Authentication and
+Signatures</a></li> <li><a href="#user-experience-and-alternative-authorization-flows">User Experience and Alternative Authorization
+Flows</a></li> <li><a href="#performance-at-scale">Performance at Scale</a></li></ul></li> <li><a href="#resources">Resources</a></li></ul> <h2 id="역할"><a href="#역할" class="header-anchor">#</a> 역할</h2> <h3 id="_3자-어플리케이션-클라이언트"><a href="#_3자-어플리케이션-클라이언트" class="header-anchor">#</a> 3자 어플리케이션: &quot;클라이언트&quot;</h3> <p>클라이언트는 사용자의 계정에 접근하고자 하는 어플리케이션입니다.
+클라이언트는 동작을 수행하기 전에 사용자로부터 권한을 획득해야 합니다.</p> <h3 id="api-리소스-서버"><a href="#api-리소스-서버" class="header-anchor">#</a> API: &quot;리소스 서버&quot;</h3> <p>리소스 서버는 사용자의 정보에 접속하기 위해 사용되는 API 서버입니다.</p> <h3 id="인증-서버"><a href="#인증-서버" class="header-anchor">#</a> 인증 서버</h3> <p>인증서버는  사용자가 요청을 승인 또는 거절할 수 있는 인터페이스를 제공하는 서버입니다.
+작게 구현하자면 인증서버는 API 서버와 동일할 수도 있습니다. 그렇지만
+큰 스케일로 배포될 때에는 대체로 단독 서버로 구성됩니다.</p> <h3 id="사용자-자원-소유자-resource-owner"><a href="#사용자-자원-소유자-resource-owner" class="header-anchor">#</a> 사용자: &quot;자원 소유자 (Resource Owner)&quot;</h3> <p>Resource Owner는 그들 계정의 일부에 대한 접근 권한을 부여하는 사람입니다.</p> <h2 id="앱-만들기"><a href="#앱-만들기" class="header-anchor">#</a> 앱 만들기</h2> <p>OAuth 프로세스를 시작하기 전에, 우선 서비스에 새로운 앱을 등록해야 합니다.
+새로운 앱을 등록할 때, 보통 어플리케이션의 이름, 웹사이트, 로고 등등 기본적인 정보를 등록하게
+됩니다.
+추가적으로
+웹서버나 브라우저 기반의 또는 모바일 앱 환경에서 사용자를 redirect 시킬 때 사용할
+Redirect URI 를 등록해야 합니다.</p> <h3 id="redirect-uris"><a href="#redirect-uris" class="header-anchor">#</a> Redirect URIs</h3> <p>보안적인 공격에 방어하기 위해, 서비스는 사용자를 미리 등록한 URI 로만 redirect 해줍니다.
+HTTP 방식의 Redirect URI 는 HTTPS 로 구성되어야만 합니다.
+이렇게 함으로써 인증 과정에서 누군가가 토큰을 가로채는 위험을 예방할 수 있습니다.
+네이티브 앱의 경우, redirect URI 로 어플리케이션을 위한 custom URL scheme 를 등록할 수 있습니다.
+예를 들자면 <code>demoapp://redirect</code> 같은 것 말입니다.</p> <h3 id="client-id-와-secret"><a href="#client-id-와-secret" class="header-anchor">#</a> Client ID 와 Secret</h3> <p>After registering your app, you will receive a client ID and
+optionally a client secret. The client ID is considered public
+information, and is used to build login URLs, or included in
+Javascript source code on a page. The client secret <strong>must</strong> be kept
+confidential. If a deployed app cannot keep the secret confidential,
+such as single-page Javascript apps or native apps, then the secret
+is not used, and ideally the service shouldn't issue a secret to
+these types of apps in the first place.</p> <h2 id="authorization"><a href="#authorization" class="header-anchor">#</a> Authorization</h2> <p>The first step of OAuth 2 is to get authorization from the user. For
+browser-based or mobile apps, this is usually accomplished by
+displaying an interface provided by the service to the user.</p> <p>OAuth 2 provides several &quot;grant types&quot; for different use cases.
+The grant types defined are:</p> <ul><li><strong>Authorization Code</strong> for apps running on a <a href="#web-server-apps">web
+server</a>, <a href="#browser-based-apps">browser-based</a>
+and <a href="#mobile-apps">mobile apps</a></li> <li><strong>Password</strong> for logging in with a <a href="#other-app-types">username and
+password</a> (only for first-party apps)</li> <li><strong>Client credentials</strong> for <a href="#client-credentials">application
+access</a> without a user present</li> <li><strong>Implicit</strong> was previously recommended for clients without a
+secret, but has been superseded by using the Authorization Code
+grant with PKCE.</li></ul> <p>Each use case is described in detail below.</p> <h2 id="web-server-apps"><a href="#web-server-apps" class="header-anchor">#</a> Web Server Apps</h2> <p>Web server apps are the most common type of application you
+encounter when dealing with OAuth servers. Web apps are written in a
+server-side language and run on a server where the source code of
+the application is not available to the public. This means the
+application is able to use its client secret when communicating with
+the authorization server, which can help avoid many attack vectors.</p> <h3 id="authorization-2"><a href="#authorization-2" class="header-anchor">#</a> Authorization</h3> <p>Create a &quot;Log In&quot; link sending the user to:</p> <div class="language- extra-class"><pre><code>https://authorization-server.com/auth?response_type=code&amp;
+  client_id=CLIENT_ID&amp;redirect_uri=REDIRECT_URI&amp;scope=photos&amp;state=1234zyx
+</code></pre></div><ul><li><strong>response_type=code</strong> - Indicates that your server expects to
+receive an authorization code</li> <li><strong>client_id</strong> - The client ID you received when you first
+created the application</li> <li><strong>redirect_uri</strong> - Indicates the URI to return the user to after
+authorization is complete</li> <li><strong>scope</strong> - One or more scope values indicating which parts of
+the user's account you wish to access</li> <li><strong>state</strong> - A random string generated by your application, which
+you'll verify later</li></ul> <p>The user sees the authorization prompt</p> <p><img src="https://aaronparecki.com/oauth-2-simplified/oauth-authorization-prompt.png" alt="OAuth AuthorizationPrompt"></p> <p>If the user clicks &quot;Allow,&quot; the service redirects the user back to
+your site with an authorization code</p> <div class="language- extra-class"><pre><code>https://example-app.com/cb?code=AUTH_CODE_HERE&amp;state=1234zyx
+</code></pre></div><ul><li><strong>code</strong> - The server returns the authorization code in the
+query string</li> <li><strong>state</strong> - The server returns the same state value that you
+passed</li></ul> <p>You should first compare this state value to ensure it matches the
+one you started with. You can typically store the state value in a
+cookie or session, and compare it when the user comes back. This
+helps ensure your redirection endpoint isn't able to be tricked
+into attempting to exchange arbitrary authorization codes.</p> <h3 id="getting-an-access-token"><a href="#getting-an-access-token" class="header-anchor">#</a> Getting an Access Token</h3> <p>Your server exchanges the authorization code for an access token by
+making a POST request to the authorization server's token endpoint:</p> <div class="language- extra-class"><pre><code>POST https://api.authorization-server.com/token
+  grant_type=authorization_code&amp;
+  code=AUTH_CODE_HERE&amp;
+  redirect_uri=REDIRECT_URI&amp;
+  client_id=CLIENT_ID&amp;
+  client_secret=CLIENT_SECRET
+</code></pre></div><ul><li><strong>grant_type=authorization_code</strong> - The grant type for this flow
+is authorization_code</li> <li><strong>code=AUTH_CODE_HERE</strong> - This is the code you received in the
+query string</li> <li><strong>redirect_uri=REDIRECT_URI</strong> - Must be identical to the
+redirect URI provided in the original link</li> <li><strong>client_id=CLIENT_ID</strong> - The client ID you received when you
+first created the application</li> <li><strong>client_secret=CLIENT_SECRET</strong> - Since this request is made
+from server-side code, the secret is included</li></ul> <p>The server replies with an access token and expiration time</p> <div class="language- extra-class"><pre><code>{
+  &quot;access_token&quot;:&quot;RsT5OjbzRn430zqMLgV3Ia&quot;,
+  &quot;expires_in&quot;:3600
+}
+</code></pre></div><p>or if there was an error</p> <div class="language- extra-class"><pre><code>{
+  &quot;error&quot;:&quot;invalid_request&quot;
+}
+</code></pre></div><p>Security: Note that the service must require apps to pre-register
+their redirect URIs.</p> <p>[]{#browser-based-apps}</p> <h2 id="single-page-apps"><a href="#single-page-apps" class="header-anchor">#</a> Single-Page Apps</h2> <p>Single-page apps (or browser-based apps) run entirely in the browser
+after loading the source code from a web page. Since the entire
+source code is available to the browser, they cannot maintain the
+confidentiality of a client secret, so the secret is not used in
+this case. The flow is based on the authorization code flow above,
+but with the addition of a dynamically generated secret used on each
+request. This is known as the <a href="https://oauth.net/2/pkce" target="_blank" rel="noopener noreferrer">PKCE<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+extension.</p> <p>::: {.inline-banner}
+Note: Previously, it was recommended that browser-based apps use the
+&quot;Implicit&quot; flow, which returns an access token immediately in the
+redirect and does not have a token exchange step. In the time since
+the spec was originally written, the industry best practice has
+changed to recommend that the authorization code flow be used
+without the client secret. This provides more opportunities to
+create a secure flow, such as using the <a href="https://oauth.net/2/pkce/" target="_blank" rel="noopener noreferrer">PKCE
+extension<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>. Further reading: <a href="https://tools.ietf.org/html/draft-ietf-oauth-security-topics" target="_blank" rel="noopener noreferrer">OAuth 2.0
+Security Best Current
+Practice<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+(ietf.org), <a href="https://tools.ietf.org/html/draft-parecki-oauth-browser-based-apps" target="_blank" rel="noopener noreferrer">OAuth 2.0 for Browser-Based
+Apps<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+(ietf.org).
+:::</p> <h3 id="authorization-3"><a href="#authorization-3" class="header-anchor">#</a> Authorization</h3> <p>Create a random string between 43-128 characters long, then generate
+the url-safe base64-encoded SHA256 hash of the string. The original
+random string is known as the <code>code_verifier</code>, and the hashed
+version is known as the <code>code_challenge</code>.</p> <p>Create a random string (code verifier), e.g.
+<code>5d2309e5bb73b864f989753887fe52f79ce5270395e25862da6940d5</code></p> <p>Create the SHA256 hash, then base64-encode the string (code
+challenge): <code>MChCW5vD-3h03HMGFZYskOSTir7II_MMTb8a9rJNhnI</code></p> <p>(You can use the helper utility at
+<a href="https://example-app.com/pkce" target="_blank" rel="noopener noreferrer">example-app.com/pkce<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> to generate a
+secret and hash.)</p> <p>Create a &quot;Log In&quot; link like the authorization code flow above, but
+now include the code challenge in the request:</p> <div class="language- extra-class"><pre><code>https://authorization-server.com/auth?response_type=code&amp;
+  client_id=CLIENT_ID&amp;redirect_uri=REDIRECT_URI&amp;scope=photos&amp;state=1234zyx&amp;code_challenge=CODE_CHALLENGE&amp;code_challenge_method=S256
+</code></pre></div><ul><li><strong>response_type=code</strong> - Indicates that your server expects to
+receive an authorization code</li> <li><strong>client_id</strong> - The client ID you received when you first
+created the application</li> <li><strong>redirect_uri</strong> - Indicates the URI to return the user to after
+authorization is complete</li> <li><strong>scope</strong> - One or more scope values indicating which parts of
+the user's account you wish to access</li> <li><strong>state</strong> - A random string generated by your application, which
+you'll verify later</li> <li><strong>code_challenge</strong> - The URL-safe base64-encoded SHA256 hash of
+the secret</li> <li><strong>code_challenge_method=S256</strong> - Indicate which hashing method
+you used (S256)</li></ul> <p>The user sees the authorization prompt</p> <p><img src="https://aaronparecki.com/oauth-2-simplified/oauth-authorization-prompt.png" alt="OAuth AuthorizationPrompt"></p> <p>If the user clicks &quot;Allow,&quot; the service redirects the user back to
+your site with an auth code</p> <div class="language- extra-class"><pre><code>https://example-app.com/cb?code=AUTH_CODE_HERE&amp;state=1234zyx
+</code></pre></div><ul><li><strong>code</strong> - The server returns the authorization code in the
+query string</li> <li><strong>state</strong> - The server returns the same state value that you
+passed</li></ul> <p>You should first compare this state value to ensure it matches the
+one you started with. You can typically store the state value in a
+cookie, and compare it when the user comes back. This ensures your
+redirection endpoint isn't able to be tricked into attempting to
+exchange arbitrary authorization codes.</p> <p>You can find a complete example of using PKCE in JavaScript in my
+blog post <a href="https://developer.okta.com/blog/2019/05/01/is-the-oauth-implicit-flow-dead" target="_blank" rel="noopener noreferrer">Is the OAuth Implicit Flow
+Dead?<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="getting-an-access-token-2"><a href="#getting-an-access-token-2" class="header-anchor">#</a> Getting an Access Token</h3> <p>Now you'll need to exchange the authorization code for an access
+token, but instead of providing a pre-registered client secret, you
+send the PKCE secret you generated at the beginning of the flow.</p> <div class="language- extra-class"><pre><code>POST https://api.authorization-server.com/token
+  grant_type=authorization_code&amp;
+  code=AUTH_CODE_HERE&amp;
+  redirect_uri=REDIRECT_URI&amp;
+  client_id=CLIENT_ID&amp;
+  code_verifier=CODE_VERIFIER
+</code></pre></div><ul><li><strong>grant_type=authorization_code</strong> - The grant type for this flow
+is authorization_code</li> <li><strong>code=AUTH_CODE_HERE</strong> - This is the code you received in the
+query string</li> <li><strong>redirect_uri=REDIRECT_URI</strong> - Must be identical to the
+redirect URI provided in the original link</li> <li><strong>client_id=CLIENT_ID</strong> - The client ID you received when you
+first created the application</li> <li><strong>code_verifier=CODE_VERIFIER</strong> - The random secret you
+generated at the beginning</li></ul> <p>The authorization server will hash the verifier and compare it to
+the challenge sent in the request, and only issue the access token
+if they match. This ensures that even if someone was able to
+intercept the authorization code, they will not be able to use it to
+get an access token since they won't have the secret.</p> <h2 id="mobile-apps"><a href="#mobile-apps" class="header-anchor">#</a> Mobile Apps</h2> <p>Like browser-based apps, mobile apps also cannot maintain the
+confidentiality of a client secret. Because of this, mobile apps
+also use the PKCE flow which does not require a client secret. There
+are some additional concerns that mobile apps should keep in mind to
+ensure the security of the OAuth flow.</p> <p>Note: Previously, it was recommended that mobile and native apps use
+the Implicit grant. In the time since the spec was originally
+written, the industry best practice has changed to recommend using
+the authorization code flow with no secret for native apps. There
+are some <a href="https://tools.ietf.org/html/rfc8252" target="_blank" rel="noopener noreferrer">additional
+recommendations<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> for native
+apps that are worth reading as well.</p> <h3 id="authorization-4"><a href="#authorization-4" class="header-anchor">#</a> Authorization</h3> <p>Create a &quot;Log in&quot; button sending the user to either the native app
+of the service on the phone, or a mobile web page for the service.
+Apps can register a custom URI scheme such as &quot;example-app://&quot; so
+the native app is launched whenever a URL with that protocol is
+visited, or they can register URL patterns which will launch the
+native app if a URL matching the pattern is visited.</p> <h4 id="using-the-service-s-native-app"><a href="#using-the-service-s-native-app" class="header-anchor">#</a> Using the Service's Native App</h4> <p>If the user has the native Facebook app installed, direct them to
+the following URL:</p> <div class="language- extra-class"><pre><code>fbauth2://authorize?response_type=code&amp;client_id=CLIENT_ID
+  &amp;redirect_uri=REDIRECT_URI&amp;scope=email&amp;state=1234zyx
+</code></pre></div><ul><li><strong>response_type=code</strong> - indicates that your server expects to
+receive an authorization code</li> <li><strong>client_id=CLIENT_ID</strong> - The client ID you received when you
+first created the application</li> <li><strong>redirect_uri=REDIRECT_URI</strong> - Indicates the URI to return the
+user to after authorization is complete, such as
+<code>fb00000000://authorize</code></li> <li><strong>scope=email</strong> - One or more scope values indicating which
+parts of the user's account you wish to access</li> <li><strong>state=1234zyx</strong> - A random string generated by your
+application, which you'll verify later</li></ul> <p>For servers that support the <a href="https://oauth.net/2/pkce/" target="_blank" rel="noopener noreferrer">PKCE
+extension<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (and if you're building a
+server, you should support the PKCE extension), you'll also include
+the following parameters. First, create a &quot;code verifier&quot; which is
+a random string that the app stores locally.</p> <ul><li><strong>code_challenge=XXXXXXX</strong> - This is a base64-encoded version of
+the sha256 hash of the code verifier string</li> <li><strong>code_challenge_method=S256</strong> - Indicates the hashing method
+used to compute the challenge, in this case, sha256.</li></ul> <p>Note that your redirect URI will probably look like
+<code>fb00000000://authorize</code> where the protocol is a custom URL scheme
+that your app has registered with the OS.</p> <h4 id="using-a-web-browser"><a href="#using-a-web-browser" class="header-anchor">#</a> Using a Web Browser</h4> <p>If the service does not have a native application, you can launch a
+mobile browser to the standard web authorization URL. Note that you
+should never use an embedded web view in your own application, as
+this provides the user no guarantee that they are actually are
+entering their password in the service's website rather than a
+phishing site.</p> <p>You should either launch the native mobile browser, or use the new
+iOS &quot;SafariViewController&quot; to launch an embedded browser in your
+application. This API was added in iOS 9, and provides a mechanism
+to launch a browser inside the application that both shows the
+address bar so the user can confirm they're on the correct website,
+and also shares cookies with the real Safari browser. It also
+prevents the application from inspecting and modifying the contents
+of the browser, so can be considered secure.</p> <div class="language- extra-class"><pre><code>https://facebook.com/dialog/oauth?response_type=code&amp;client_id=CLIENT_ID
+  &amp;redirect_uri=REDIRECT_URI&amp;scope=email&amp;state=1234zyx
+</code></pre></div><p>Again, if the service supports PKCE, then those parameters should be
+included as well as described above.</p> <ul><li><strong>response_type=code</strong> - indicates that your server expects to
+receive an authorization code</li> <li><strong>client_id=CLIENT_ID</strong> - The client ID you received when you
+first created the application</li> <li><strong>redirect_uri=REDIRECT_URI</strong> - Indicates the URI to return the
+user to after authorization is complete, such as
+<code>fb00000000://authorize</code></li> <li><strong>scope=email</strong> - One or more scope values indicating which
+parts of the user's account you wish to access</li> <li><strong>state=1234zyx</strong> - A random string generated by your
+application, which you'll verify later</li></ul> <p>The user will see the authorization prompt</p> <p><img src="https://aaronparecki.com/oauth-2-simplified/everyday-city-auth.png" alt="Facebook AuthorizationPrompt"></p> <h3 id="getting-an-access-token-3"><a href="#getting-an-access-token-3" class="header-anchor">#</a> Getting an Access Token</h3> <p>After clicking &quot;Approve&quot;, the user will be redirected back to your
+application with a URL like</p> <div class="language- extra-class"><pre><code>fb00000000://authorize?code=AUTHORIZATION_CODE&amp;state=1234zyx
+</code></pre></div><p>Your mobile application should first verify that the state
+corresponds to the state that was used in the initial request, and
+can then exchange the authorization code for an access token.</p> <p>The token exchange will look the same as exchanging the code in the
+web server app case, except that the secret is not sent. If the
+server supports PKCE, then you will need to include an additional
+parameter as described below.</p> <div class="language- extra-class"><pre><code>POST https://api.authorization-server.com/token
+  grant_type=authorization_code&amp;
+  code=AUTH_CODE_HERE&amp;
+  redirect_uri=REDIRECT_URI&amp;
+  client_id=CLIENT_ID&amp;
+  code_verifier=VERIFIER_STRING
+</code></pre></div><ul><li><strong>grant_type=authorization_code</strong> - The grant type for this flow
+is authorization_code</li> <li><strong>code=AUTH_CODE_HERE</strong> - This is the code you received in the
+query string</li> <li><strong>redirect_uri=REDIRECT_URI</strong> - Must be identical to the
+redirect URI provided in the original link</li> <li><strong>client_id=CLIENT_ID</strong> - The client ID you received when you
+first created the application</li> <li><strong>code_verifier=VERIFIER_STRING</strong> - The plaintext string that
+you previously hashed to create the code_challenge</li></ul> <p>The authorization server will verify this request and return an
+access token.</p> <p>If the server supports PKCE, then the authorization server will
+recognize that this code was generated with a code challenge, and
+will hash the provided plaintext and confirm that the hashed version
+corresponds with the hashed string that was sent in the initial
+authorization request. This ensures the security of using the
+authorization code flow with clients that don't support a secret.</p> <h2 id="other-grant-types-others"><a href="#other-grant-types-others" class="header-anchor">#</a> Other Grant Types {#others}</h2> <h3 id="password"><a href="#password" class="header-anchor">#</a> Password</h3> <p>OAuth 2 also provides a &quot;password&quot; grant type which can be used to
+exchange a username and password for an access token directly. Since
+this obviously requires the application to collect the user's
+password, it must only be used by apps created by the service
+itself. For example, the native Twitter app could use this grant
+type to log in on mobile or desktop apps.</p> <p>To use the password grant type, simply make a POST request like the
+following:</p> <div class="language- extra-class"><pre><code>POST https://api.authorization-server.com/token
+  grant_type=password&amp;
+  username=USERNAME&amp;
+  password=PASSWORD&amp;
+  client_id=CLIENT_ID
+</code></pre></div><ul><li><strong>grant_type=password</strong> - The grant type for this flow is
+password</li> <li><strong>username=USERNAME</strong> - The user's username as collected by the
+application</li> <li><strong>password=PASSWORD</strong> - The user's password as collected by the
+application</li> <li><strong>client_id=CLIENT_ID</strong> - The client ID you received when you
+first created the application</li></ul> <p>The server replies with an access token in the same format as the
+other grant types.</p> <p>Note, the client secret is not included here under the assumption
+that most of the use cases for password grants will be mobile or
+desktop apps, where the secret cannot be protected.</p> <h3 id="application-access-client-credentials"><a href="#application-access-client-credentials" class="header-anchor">#</a> Application access {#client-credentials}</h3> <p>In some cases, applications may need an access token to act on
+behalf of themselves rather than a user. For example, the service
+may provide a way for the application to update their own
+information such as their website URL or icon, or they may wish to
+get statistics about the users of the app. In this case,
+applications need a way to get an access token for their own
+account, outside the context of any specific user. OAuth provides
+the <code>client_credentials</code> grant type for this purpose.</p> <p>To use the client credentials grant type, make a POST request like
+the following:</p> <div class="language- extra-class"><pre><code>POST https://api.authorization-server.com/token
+    grant_type=client_credentials&amp;
+    client_id=CLIENT_ID&amp;
+    client_secret=CLIENT_SECRET
+</code></pre></div><p>The response will include an access token in the same format as the
+other grant types.</p> <h2 id="making-authenticated-requests"><a href="#making-authenticated-requests" class="header-anchor">#</a> Making Authenticated Requests</h2> <p>The end result of all the grant types is obtaining an access token.</p> <p>Now that you have an access token, you can make requests to the API.
+You can quickly make an API request using cURL as follows:</p> <div class="language- extra-class"><pre><code>curl -H &quot;Authorization: Bearer RsT5OjbzRn430zqMLgV3Ia&quot; \
+https://api.authorization-server.com/1/me
+</code></pre></div><p>That's it! Make sure you always send requests over HTTPS and never
+ignore invalid certificates. HTTPS is the only thing protecting
+requests from being intercepted or modified.</p> <h2 id="differences-from-oauth-1-0-differences"><a href="#differences-from-oauth-1-0-differences" class="header-anchor">#</a> Differences from OAuth 1.0 {#differences}</h2> <p>OAuth 1.0 was largely based on existing proprietary protocols such
+as Flickr's &quot;FlickrAuth&quot; and Google's &quot;AuthSub&quot;. The result
+represented the best solution based on actual implementation
+experience. However, after several years of working with the
+protocol, the community learned enough to rethink and improve the
+protocol in three main areas where OAuth 1.0 proved limited or
+confusing.</p> <p>You can read more about this in detail in my book <a href="https://www.oauth.com/oauth2-servers/differences-between-oauth-1-2/" target="_blank" rel="noopener noreferrer">OAuth 2.0
+Simplified<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</p> <h2 id="resources"><a href="#resources" class="header-anchor">#</a> Resources</h2> <ul><li>OAuth 2.0 Simplified - the book
+<a href="https://oauth2simplified.com" target="_blank" rel="noopener noreferrer">oauth2simplified.com<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>Learn more about <a href="https://www.oauth.com/" target="_blank" rel="noopener noreferrer">creating OAuth 2.0
+Servers<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://tools.ietf.org/html/rfc7636" target="_blank" rel="noopener noreferrer">PKCE Extension<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://tools.ietf.org/html/draft-ietf-oauth-native-apps-07" target="_blank" rel="noopener noreferrer">Recommendations for Native
+Apps<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>More information is available on <a href="https://oauth.net" target="_blank" rel="noopener noreferrer">OAuth.net<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>Some content adapted from
+<a href="http://hueniverse.com" target="_blank" rel="noopener noreferrer">hueniverse.com<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</li></ul> <h3 id="about-the-author"><a href="#about-the-author" class="header-anchor">#</a> About the Author</h3> <p>Aaron Parecki is the author of <a href="https://oauth2simplified.com/" target="_blank" rel="noopener noreferrer">OAuth 2.0
+Simplified<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>, maintains
+<a href="https://oauth.net" target="_blank" rel="noopener noreferrer">oauth.net<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>, and is the editor of several W3C
+specifications.</p> <p>Want Aaron Parecki to come to your meetup and give a talk on OAuth?
+<a href="/oauth/">Request a presentation from Aaron</a>.</p> <p>#oauth #draft</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.40e07b0e.js" defer></script><script src="/assets/js/2.bb588f66.js" defer></script><script src="/assets/js/62.c5c6dd51.js" defer></script><script src="/assets/js/4.937e0cf2.js" defer></script>
+  </body>
+</html>
